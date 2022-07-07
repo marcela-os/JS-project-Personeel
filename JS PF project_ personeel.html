@@ -147,7 +147,12 @@
 			eOption1.appendChild(sValue1);
 			eOption1.value = ""; //de eerste option op "" zetten. Doe je dat niet dan heeft het element geen value attribuut en zal de validatie straks fout lopen.
 			eDF.appendChild(eOption1);
-
+			for (var i = 0; i < aFuncties.length; i++) {
+				var eOption = document.createElement('option');
+				var sValue = document.createTextNode(aFuncties[i]);
+				eOption.appendChild(sValue);
+				eDF.appendChild(eOption);
+			}
 			eFunctie.appendChild(eDF);
 
 
