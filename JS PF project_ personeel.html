@@ -173,11 +173,23 @@
 				var sSexe = undefined; //String of undefined
 				//bepaal value sexe
 				for (var i = 0; i < eSexe.length; i++) {
-					if (eSexe[i].checked == true) { 
-						sSexe = eSexe[i].value 
+					if (eSexe[i].checked == true) {
+						sSexe = eSexe[i].value
 					};
 				}
-				console.log(sNaam + " " +  nLeeftijd + " " + sFunctie + " " + sSexe + " " + bGehuwd + " " + sKind1 + " " + sKind2 + " " + sKind3);
+				console.log(sNaam + " " + nLeeftijd + " " + sFunctie + " " + sSexe + " " + bGehuwd + " " + sKind1 + " " + sKind2 + " " + sKind3);
+
+				//eenvoudige validatie
+				if (sNaam == "" || isNaN(nLeeftijd) || typeof (sSexe) == "undefined" || sFunctie == "") {
+					//niet goed
+					console.log('validatie NOK');
+					alert('één van de verplichte velden is niet ingevuld')
+				}
+				else {
+					//ok
+					console.log('validatie OK');
+					fnPersoneelslidToevoegen(sNaam, nLeeftijd, bGehuwd, sFunctie, sSexe, [sKind1, sKind2, sKind3]);
+				}
 			});
 
 		}
