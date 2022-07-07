@@ -161,6 +161,25 @@
 				console.log("clik");
 			}, false);
 
+			eToevoegen.addEventListener('click', function () {
+				//formulierwaarden aflezen
+				var sNaam = eNaam.value; //String
+				var nLeeftijd = eLeeftijd.value; //String
+				var sKind1 = eKind1.value; //String
+				var sKind2 = eKind2.value; //String
+				var sKind3 = eKind3.value; //String
+				var bGehuwd = eGehuwd.checked; //Boolean
+				var sFunctie = eFunctie.value; //String
+				var sSexe = undefined; //String of undefined
+				//bepaal value sexe
+				for (var i = 0; i < eSexe.length; i++) {
+					if (eSexe[i].checked == true) { 
+						sSexe = eSexe[i].value 
+					};
+				}
+				console.log(sNaam + " " +  nLeeftijd + " " + sFunctie + " " + sSexe + " " + bGehuwd + " " + sKind1 + " " + sKind2 + " " + sKind3);
+			});
+
 		}
 
 		function fnToonPersoneel(aoData) {
