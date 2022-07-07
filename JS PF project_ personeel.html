@@ -165,7 +165,7 @@
 
 		function fnToonPersoneel(aoData) {
 			/*
-			Deze functie overloopt de eigenschappen van de personeelsleden en toont deze met een bolletjeslijst.
+			Funkcja ta przechodzi przez właściwości pracowników i pokazuje je za pomocą listy wypunktowanej.
 
 			return HTML String met UL lijst van properties en hun waarden van alle objecten in
 			@aoData array van objecten
@@ -179,13 +179,18 @@
 					//overloop alle eigenschappen van object
 					for (var key in oPersoon) {
 						var propWaarde = oPersoon[key];
-						sLijst += "<li>" + key + ":" + propWaarde + "</li>";
+						if (Array.isArray(propWaarde)) {
+							sLijst += "<li>" + key + ":" + fnToonPersoneel(propWaarde) + "</li>";
+						}
+						else {
+							sLijst += "<li>" + key + ":" + propWaarde + "</li>";
+						}
 					}
 					sLijst += "</ul>";
 				}
 			}
 			return sLijst;
-		} 
+		}
 
 	</script>
 </head>
