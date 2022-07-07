@@ -155,9 +155,37 @@
 			}
 			eFunctie.appendChild(eDF);
 
-
+			//=======EVENT HANDLERS=========================================
+			ePersoneelsLijst.addEventListener('click', function () {
+				eOutput.innerHTML = fnToonPersoneel(aoPersoneel);
+				console.log("clik");
+			}, false);
 
 		}
+
+		function fnToonPersoneel(aoData) {
+			/*
+			Deze functie overloopt de eigenschappen van de personeelsleden en toont deze met een bolletjeslijst.
+
+			return HTML String met UL lijst van properties en hun waarden van alle objecten in
+			@aoData array van objecten
+			*/
+			var sLijst = "";
+			if (aoData.length > 0) {
+				//overloop array van objecten
+				for (var i = 0; i < aoData.length; i++) {
+					sLijst += "<ul>";
+					var oPersoon = aoData[i];
+					//overloop alle eigenschappen van object
+					for (var key in oPersoon) {
+						var propWaarde = oPersoon[key];
+						sLijst += "<li>" + key + ":" + propWaarde + "</li>";
+					}
+					sLijst += "</ul>";
+				}
+			}
+			return sLijst;
+		} 
 
 	</script>
 </head>
