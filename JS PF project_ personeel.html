@@ -223,6 +223,40 @@
 			return sLijst;
 		}
 
+		function fnPersoneelslidToevoegen(naam, leeftijd, gehuwd, functie, sexe, aKindnamen) {
+			/*
+			maakt een personeelslid object en voegt toe aan aoPersoneel
+			@naam String,
+			@leeftijd Number,
+			@gehuwd Boolean,
+			@functie String,
+			@sexe String,
+			@aKindnamen Array, optioneel, array van kindnamen
+			*/
+			var persoon = new Object();
+			persoon.naam = naam;
+			persoon.leeftijd = leeftijd;
+			persoon.functie = functie;
+			persoon.gehuwd = gehuwd;
+			persoon.sexe = sexe;
+			persoon.vrienden = 0;
+			persoon.id = parseInt((Math.random() * 10000) + 1);
+			var aKindNamen = aKindnamen || []; //optioneel argument opvangen
+			var aantalKinderen = aKindnamen.length;
+			if (aantalKinderen > 0) {
+				persoon.kinderen = []; //maak een property
+				for (var i = 0; i < aantalKinderen; i++) {
+					if (aKindnamen[i] != "") {
+						var kind = new Object();
+						kind.naam = aKindnamen[i];
+						persoon.kinderen.push(kind);
+					}
+				}
+			}
+			aoPersoneel.push(persoon);
+			console.log(aoPersoneel)
+		}
+
 	</script>
 </head>
 
