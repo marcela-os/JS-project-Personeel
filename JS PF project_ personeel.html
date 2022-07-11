@@ -157,7 +157,7 @@
 
 			//=======EVENT HANDLERS=========================================
 			ePersoneelsLijst.addEventListener('click', function () {
-				eOutput.innerHTML = fnToonPersoneel(aoPersoneel);
+				eOutput.innerHTML = fnToonPersoneel2(aoPersoneel);
 				console.log("clik");
 			}, false);
 
@@ -233,19 +233,23 @@
 			*/
 			var sLijst = "";
 			if (aoData.length > 0) {
-				//overloopt het array
 				for (var i = 0; i < aoData.length; i++) {
 					//overloopt alle eigenschappen
 					var oPersoon = aoData[i];
-					sLijst += "<div class='persoon'>";
+					sLijst += "<div class='persoon'" + " id='pers_" + oPersoon.id + "'" + " title='personeelsnummer: " + oPersoon.id + "'" + " data-vrienden='" + oPersoon.vrienden + "'" + "'>";
 					for (var key in oPersoon) {
 						var propWaarde = oPersoon[key];
-						if (Array.isArray(propWaarde)) {
-							sLijst += "<span class='prop'>" + key + "</span><span class='val'>" + fnToonPersoneel2(propWaarde) + "</span>";
+						if (key != "id" && key != "vrienden") {
+							if (Array.isArray(propWaarde)) {
+								sLijst += "<span class='prop'>" + key + "</span><span class='val'>" + fnToonPersoneel2(propWaarde) + "</span>";
+							}
+							else {
+								sLijst += "<span class='prop'>" + key + ":</span><span class='val'>" + propWaarde + "</span>";
+							}
 						}
-						else {
-							sLijst += "<span class='prop'>" + key + ":</span><span class='val'>" + propWaarde + "</span>";
-						}
+					}
+					if (typeof oPersoon.vrienden !== "undefined") {
+						sLijst += "<button class='like' title='voeg een vriendje toe'>Like</button>";
 					}
 					sLijst += "</div>";
 				}
