@@ -254,7 +254,22 @@
 				}
 			}
 			aoPersoneel.push(persoon);
+			fnUpdateTeller(1); //aktualizacja licznika po dodaniu pracownika
 			console.log(aoPersoneel)
+		}
+
+		function fnUpdateTeller(n) {
+			/*
+			licznik pracowników
+			update de teller in de span#teller
+			@n increment/verhoging 
+			*/
+			var eTeller = document.getElementById('teller');
+			//console.log(eTeller);
+			var nTeller = parseInt(eTeller.innerHTML);
+			//console.log("nTeller" + nTeller);
+			nTeller = nTeller + n;
+			eTeller.innerHTML = nTeller;
 		}
 
 	</script>
