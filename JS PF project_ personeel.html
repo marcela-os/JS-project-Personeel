@@ -189,6 +189,9 @@
 					//ok
 					console.log('validatie OK');
 					fnPersoneelslidToevoegen(sNaam, nLeeftijd, bGehuwd, sFunctie, sSexe, [sKind1, sKind2, sKind3]);
+					//formulier reset voor volgende toevoeging
+					document.frmPersoneelslid.reset()  //wartości pól są resetowane do ich defaultValue
+					eNaam.focus();  //ponownie umieszam kursor w pierwszym polu
 				}
 			});
 
