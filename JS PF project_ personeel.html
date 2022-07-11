@@ -197,30 +197,57 @@
 
 		}
 
-		function fnToonPersoneel(aoData) {
-			/*
-			Funkcja ta przechodzi przez właściwości pracowników i pokazuje je za pomocą listy wypunktowanej.
+		//function fnToonPersoneel(aoData) {
+		//	/*
+		//	Funkcja ta przechodzi przez właściwości pracowników i pokazuje je za pomocą listy wypunktowanej.
 
-			return HTML String met UL lijst van properties en hun waarden van alle objecten in
+		//	return HTML String met UL lijst van properties en hun waarden van alle objecten in
+		//	@aoData array van objecten
+		//	*/
+		//	var sLijst = "";
+		//	if (aoData.length > 0) {
+		//		//overloop array van objecten
+		//		for (var i = 0; i < aoData.length; i++) {
+		//			sLijst += "<ul>";
+		//			var oPersoon = aoData[i];
+		//			//overloop alle eigenschappen van object
+		//			for (var key in oPersoon) {
+		//				var propWaarde = oPersoon[key];
+		//				if (Array.isArray(propWaarde)) {
+		//					sLijst += "<li>" + key + ":" + fnToonPersoneel(propWaarde) + "</li>";
+		//				}
+		//				else {
+		//					sLijst += "<li>" + key + ":" + propWaarde + "</li>";
+		//				}
+		//			}
+		//			sLijst += "</ul>";
+		//		}
+		//	}
+		//	return sLijst;
+		//}
+
+		function fnToonPersoneel2(aoData) {
+			/*
+			return HTML String met DIVs en SPANs van properties en hun waarden van alle objecten in
 			@aoData array van objecten
 			*/
 			var sLijst = "";
 			if (aoData.length > 0) {
-				//overloop array van objecten
+				//overloopt het array
 				for (var i = 0; i < aoData.length; i++) {
-					sLijst += "<ul>";
+					//overloopt alle eigenschappen
 					var oPersoon = aoData[i];
-					//overloop alle eigenschappen van object
+					sLijst += "<div class='persoon'>";
 					for (var key in oPersoon) {
 						var propWaarde = oPersoon[key];
 						if (Array.isArray(propWaarde)) {
-							sLijst += "<li>" + key + ":" + fnToonPersoneel(propWaarde) + "</li>";
+							sLijst += "<span class='prop'>" + key + "</span><span class='val'>" + fnToonPersoneel2(propWaarde) + "</span>";
 						}
 						else {
-							sLijst += "<li>" + key + ":" + propWaarde + "</li>";
+							sLijst += "<span class='prop'>" + key + ":</span><span class='val'>" + propWaarde + "</span>";
 						}
 					}
-					sLijst += "</ul>";
+					sLijst += "</div>";
 				}
 			}
 			return sLijst;
